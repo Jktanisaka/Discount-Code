@@ -10,6 +10,14 @@
   justify-content: center;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
 .button-styling {
   height: auto;
   width: auto;
@@ -21,6 +29,10 @@
   font-family: sans-serif;
   font-size: 2rem;
   box-shadow: 2px 5px #999
+}
+
+label {
+  margin: 5px;
 }
 
 .button-styling:hover {

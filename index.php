@@ -10,12 +10,10 @@
 </head>
 
 <body>
-  <div class="flex justify-center">
+  <div class="flex justify-center" id="button-container">
     <button id="admin-button" type="button" class="button-styling">Admin</button>
-    <button id="customer-button"type="button" class="button-styling">Customer</button>
+    <button id="customer-button" type="button" class="button-styling">Customer</button>
   </div>
-  <div>
-    <h1>admin</h1>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="main.js"></script>
