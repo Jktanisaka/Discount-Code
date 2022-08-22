@@ -12,7 +12,7 @@
 <body>
   <div>
     <div class="flex justify-center" id="coupon-page">
-      <form action="database.php" class="flex justify-center flex-column" id="coupon-form" method="post">
+      <form action="insert.php" class="flex justify-center flex-column" id="coupon-form" method="post">
         <label for="coupon-name">Coupon Code Name</label>
         <input type="text" name="coupon-name" id="coupon-code-name" required>
         <label for="coupon-type">Coupon Type</label>
