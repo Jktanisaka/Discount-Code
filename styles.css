@@ -56,3 +56,8 @@ label {
   box-shadow: 2px 3px #666;
   transform: translateY(4px);
 }
+
+td>input {
+  border: none;
+  text-align: center;
+}

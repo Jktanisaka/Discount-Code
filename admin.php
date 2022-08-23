@@ -27,24 +27,29 @@
         <th>Start Date</th>
         <th>End Date</th>
       </tr>
+
       <?php foreach ($coupons as $coupon) { ?>
-        <tr>
-          <td> <?php echo htmlspecialchars($coupon['couponName']); ?> </td>
-          <td> <?php echo htmlspecialchars($coupon['couponType']); ?> </td>
-          <td> <?php echo htmlspecialchars($coupon['couponSeverity']); ?> </td>
-          <td><?php if ($coupon['startDate'] === "0000-00-00") {
-                echo "none";
-              } else {
-                echo htmlspecialchars(date("d/m/Y", strtotime($coupon['startDate'])));
-              } ?>
-          </td>
-          <td><?php if ($coupon['endDate'] === "0000-00-00") {
-                echo "none";
-              } else {
-                echo htmlspecialchars(date("d/m/Y", strtotime($coupon['endDate'])));
-              } ?>
-          </td>
-        </tr>
+        <form action="update.php" method="POST">
+          <tr>
+            <td><input name="couponName" value="<?php echo htmlspecialchars($coupon['couponName']) ?>" readonly></input> </td>
+            <td><input name="couponType" value="<?php echo htmlspecialchars($coupon['couponType']) ?>" readonly></input></td>
+            <td><input name="couponSeverity" value=" <?php echo htmlspecialchars($coupon['couponSeverity']); ?>" readonly></input> </td>
+            <td><input name="startDate" value="<?php if ($coupon['startDate'] === "0000-00-00") {
+                                                  echo "none";
+                                                } else {
+                                                  echo htmlspecialchars(date("m/d/Y", strtotime($coupon['startDate'])));
+                                                } ?>" readonly></input>
+            </td>
+            <td><input name="endDate" value="<?php if ($coupon['endDate'] === "0000-00-00") {
+                                                echo "none";
+                                              } else {
+                                                echo htmlspecialchars(date("m/d/Y", strtotime($coupon['endDate'])));
+                                              } ?>" readonly></input>
+            </td>
+            <td><input type="submit" value="Edit" data-id='<?php echo htmlspecialchars($coupon['couponID']) ?>' name="edit"></input></td>
+            <td><input type="hidden" value="<?php echo htmlspecialchars($coupon['couponID']) ?>" name="couponID"></input></td>
+          </tr>
+        </form>
       <?php } ?>
     </table>
     <div class="flex flex-column align-center">
