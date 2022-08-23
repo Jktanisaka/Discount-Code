@@ -11,6 +11,33 @@
 
 <body>
   <div>
+    <?php
+    include_once 'db.php';
+    $sql = 'SELECT *
+        FROM coupon';
+    $result = mysqli_query($conn, $sql);
+    $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    ?>
+    <table>
+      <tr>
+        <th>Coupon Name</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      <?php foreach ($coupons as $coupon) { ?>
+        <tr>
+          <td> <?php echo htmlspecialchars($coupon['couponName']); ?> </td>
+          <td> <?php echo htmlspecialchars($coupon['couponType']); ?> </td>
+          <td> <?php echo htmlspecialchars($coupon['couponSeverity']); ?> </td>
+          <td> <?php echo htmlspecialchars($coupon['startDate']); ?> </td>
+          <td> <?php echo htmlspecialchars($coupon['endDate']); ?> </td>
+        </tr>
+      <?php } ?>
+
+
+    </table>
     <div class="flex justify-center" id="coupon-page">
       <form action="insert.php" class="flex justify-center flex-column" id="coupon-form" method="post">
         <label for="coupon-name">Coupon Code Name</label>
@@ -23,7 +50,7 @@
         </select>
         <input type="number" class="hidden" id="value-box" name="value-box">
         <label for="start-date">Start Date</label>
-        <input type="date" name="start-date" id="start-date" >
+        <input type="date" name="start-date" id="start-date">
         <label for="end-date">End Date</label>
         <input type="date" name="end-date" id="end-date">
         <input type="submit">

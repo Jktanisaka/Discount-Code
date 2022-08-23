@@ -3,13 +3,13 @@ include_once 'db.php';
 
 $name = $_REQUEST['coupon-name'];
 $type = $_REQUEST['coupon-type'];
-if ($_REQUEST['value-box']) {
-  if ($type === 'bogo') {
+
+ if ($type === 'bogo') {
     $value = 50;
   } else {
     $value = $_REQUEST['value-box'];
   }
-}
+
 if ($_REQUEST['start-date']) {
   $start = $_REQUEST['start-date'];
 }
