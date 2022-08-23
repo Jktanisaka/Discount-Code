@@ -18,7 +18,8 @@
     $result = mysqli_query($conn, $sql);
     $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
     ?>
-    <table>
+    <table class="flex justify-center">
+      <h2 class="text-center">Existing Coupons</h2>
       <tr>
         <th>Coupon Name</th>
         <th>Type</th>
@@ -31,30 +32,42 @@
           <td> <?php echo htmlspecialchars($coupon['couponName']); ?> </td>
           <td> <?php echo htmlspecialchars($coupon['couponType']); ?> </td>
           <td> <?php echo htmlspecialchars($coupon['couponSeverity']); ?> </td>
-          <td> <?php echo htmlspecialchars($coupon['startDate']); ?> </td>
-          <td> <?php echo htmlspecialchars($coupon['endDate']); ?> </td>
+          <td><?php if ($coupon['startDate'] === "0000-00-00") {
+                echo "none";
+              } else {
+                echo htmlspecialchars(date("d/m/Y", strtotime($coupon['startDate'])));
+              } ?>
+          </td>
+          <td><?php if ($coupon['endDate'] === "0000-00-00") {
+                echo "none";
+              } else {
+                echo htmlspecialchars(date("d/m/Y", strtotime($coupon['endDate'])));
+              } ?>
+          </td>
         </tr>
       <?php } ?>
-
-
     </table>
-    <div class="flex justify-center" id="coupon-page">
-      <form action="insert.php" class="flex justify-center flex-column" id="coupon-form" method="post">
-        <label for="coupon-name">Coupon Code Name</label>
-        <input type="text" name="coupon-name" id="coupon-code-name" required>
-        <label for="coupon-type">Coupon Type</label>
-        <select name="coupon-type" id="coupon-type">
-          <option value="bogo">Buy one get one free</option>
-          <option value="percentage">% off</option>
-          <option value="dollar">$ amount off</option>
-        </select>
-        <input type="number" class="hidden" id="value-box" name="value-box">
-        <label for="start-date">Start Date</label>
-        <input type="date" name="start-date" id="start-date">
-        <label for="end-date">End Date</label>
-        <input type="date" name="end-date" id="end-date">
-        <input type="submit">
-      </form>
+    <div class="flex flex-column align-center">
+      <button type="button" class="button-styling" id="new-coupon">Make new coupon</button>
+
+      <div class="flex justify-center hidden" id="coupon-page">
+        <form action="insert.php" class="flex justify-center flex-column" id="coupon-form" method="post">
+          <label for="coupon-name">Coupon Code Name</label>
+          <input type="text" name="coupon-name" id="coupon-code-name" required>
+          <label for="coupon-type">Coupon Type</label>
+          <select name="coupon-type" id="coupon-type">
+            <option value="bogo">Buy one get one free</option>
+            <option value="percentage">% off</option>
+            <option value="dollar">$ amount off</option>
+          </select>
+          <input type="number" class="hidden" id="value-box" name="value-box">
+          <label for="start-date">Start Date</label>
+          <input type="date" name="start-date" id="start-date">
+          <label for="end-date">End Date</label>
+          <input type="date" name="end-date" id="end-date">
+          <input type="submit">
+        </form>
+      </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

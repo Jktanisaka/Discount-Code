@@ -12,10 +12,10 @@ $type = $_REQUEST['coupon-type'];
 
 if ($_REQUEST['start-date']) {
   $start = $_REQUEST['start-date'];
-}
+} else {$start = null;}
 if ($_REQUEST['end-date']) {
   $end = $_REQUEST['end-date'];
-}
+} else {$end = null;}
 
 echo $name, $type, $value, $start, $end;
 

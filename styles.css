@@ -10,8 +10,20 @@
   justify-content: center;
 }
 
+.align-center{
+  align-items: center;
+}
+
 .flex-column {
   flex-direction: column;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .hidden {

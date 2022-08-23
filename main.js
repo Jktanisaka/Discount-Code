@@ -15,4 +15,7 @@ $(document).ready(function(){
         break;
     }
   })
+  $("#new-coupon").click(function(){
+    $("#coupon-page").slideToggle()
+  })
 })
