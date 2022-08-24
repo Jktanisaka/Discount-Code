@@ -19,8 +19,8 @@ if ($_REQUEST['end-date']) {
 
 echo $name, $type, $value, $start, $end;
 
-$sql = "INSERT INTO coupon (couponName, startDate, endDate, couponType, couponSeverity, timesUsed, shopID)
-        VALUES ('$name', '$start', '$end', '$type', '$value', 0, 1)";
+$sql = "INSERT INTO coupon (couponName, startDate, endDate, couponType, couponSeverity, timesUsed, shopID, active)
+        VALUES ('$name', '$start', '$end', '$type', '$value', 0, 1, TRUE)";
 if (mysqli_query($conn, $sql)){
   echo "Coupon added";
  } else {
