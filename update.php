@@ -1,6 +1,13 @@
 <?php
 
-$a = $_POST['edit'];
+if (isset($_POST['delete'])) {
+  $id=$_POST['couponID'];
+  include_once "delete.php";
+  echo "deleted";
+  exit();
+}
+
+
 $name = $_POST['couponName'];
 $type = $_POST['couponType'];
 $severity = $_POST['couponSeverity'];

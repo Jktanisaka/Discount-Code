@@ -14,7 +14,8 @@
     <?php
     include_once 'db.php';
     $sql = 'SELECT *
-        FROM coupon';
+        FROM coupon
+        where active = TRUE';
     $result = mysqli_query($conn, $sql);
     $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
     ?>
@@ -46,7 +47,8 @@
                                                 echo htmlspecialchars(date("m/d/Y", strtotime($coupon['endDate'])));
                                               } ?>" readonly></input>
             </td>
-            <td><input type="submit" value="Edit" data-id='<?php echo htmlspecialchars($coupon['couponID']) ?>' name="edit"></input></td>
+            <td><input type="submit" value="Edit" name="edit"></input></td>
+            <td><input type="submit" value="Delete" name="delete"></input></td>
             <td><input type="hidden" value="<?php echo htmlspecialchars($coupon['couponID']) ?>" name="couponID"></input></td>
           </tr>
         </form>
@@ -54,7 +56,6 @@
     </table>
     <div class="flex flex-column align-center">
       <button type="button" class="button-styling" id="new-coupon">Make new coupon</button>
-
       <div class="flex justify-center hidden" id="coupon-page">
         <form action="insert.php" class="flex justify-center flex-column" id="coupon-form" method="post">
           <label for="coupon-name">Coupon Code Name</label>
