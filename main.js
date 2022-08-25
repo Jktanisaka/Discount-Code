@@ -2,6 +2,9 @@ $(document).ready(function(){
   $("#admin-button").click(function(){
     window.location.assign("admin.php");
   })
+  $("#customer-button").click(function(){
+    window.location.assign("customer.php")
+  })
   $("#coupon-form").change(function(event){
     switch(event.target.value) {
       case "bogo":
