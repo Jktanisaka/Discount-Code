@@ -14,7 +14,7 @@ $severity = $_POST['couponSeverity'];
 $start = str_replace('/', '-', date("Y-m-d", strtotime($_POST['startDate'])));
 $end = str_replace('/', '-', date("Y-m-d", strtotime($_POST['endDate'])));
 $id = $_POST['couponID'];
-echo $name, $type, $severity, $start, $end, $id
+
 
 ?>
 <!DOCTYPE html>
