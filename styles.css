@@ -1,5 +1,14 @@
 * {
-  background-color: white
+
+  font-family: 'Plus Jakarta Sans'
+}
+input {
+  font-family: 'Plus Jakarta Sans';
+}
+
+tr:hover {
+  background-color: blue !important;
+  border-collapse: collapse;
 }
 
 .flex {
@@ -30,12 +39,39 @@
   display: none;
 }
 
+.plus-jakarta-sans {
+  font-family: 'Plus Jakarta Sans', roboto;
+}
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.edit-button {
+background-color: lightsalmon;
+border-radius: 10px;
+border: 1px solid #1c1c1c;
+padding: 2px 4px;
+}
+
+.delete-button {
+background-color: lightcoral;
+border-radius: 10px;
+  border: 1px solid #1c1c1c;
+  padding: 2px 4px;
+}
+
+.edit-button,
+.delete-button,
+.button-styling:hover {
+  cursor: pointer;
+}
+
 .button-styling {
   height: auto;
   width: auto;
   margin: 1rem;
   padding: .5rem;
-  border-radius: 5px;
+  border-radius:10px;
   border: 1px solid black;
   background-color: lightblue;
   font-family: sans-serif;
@@ -58,6 +94,19 @@ label {
 }
 
 td>input {
-  border: none;
+  border-collapse: collapse !important;
   text-align: center;
+  padding: 0;
+  border: none;
+}
+
+td{
+  margin: 0px;
+  padding: 3px 0;
+  border: none
+}
+
+table{
+  border-spacing: 0;
+  border-collapse: collapse;
 }

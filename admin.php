@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eventeny</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -47,8 +50,8 @@
                                                 echo htmlspecialchars(date("m/d/Y", strtotime($coupon['endDate'])));
                                               } ?>" readonly></input>
             </td>
-            <td><input type="submit" value="Edit" name="edit"></input></td>
-            <td><input type="submit" value="Delete" name="delete"></input></td>
+            <td><input type="submit" value="Edit" name="edit" class="edit-button"></input></td>
+            <td><input type="submit" value="Delete" name="delete" class="delete-button"></input></td>
             <td><input type="hidden" value="<?php echo htmlspecialchars($coupon['couponID']) ?>" name="couponID"></input></td>
           </tr>
         </form>
