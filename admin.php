@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eventeny</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -21,7 +24,7 @@
     ?>
     <table class="flex justify-center">
       <h2 class="text-center">Existing Coupons</h2>
-      <tr>
+      <tr class="tr-heading">
         <th>Coupon Name</th>
         <th>Type</th>
         <th>Value</th>
@@ -32,7 +35,7 @@
       <?php foreach ($coupons as $coupon) { ?>
         <form action="update.php" method="POST">
           <tr>
-            <td><input name="couponName" value="<?php echo htmlspecialchars($coupon['couponName']) ?>" readonly></input> </td>
+            <td><input class="ms-1" name="couponName" value="<?php echo htmlspecialchars($coupon['couponName']) ?>" readonly></input> </td>
             <td><input name="couponType" value="<?php echo htmlspecialchars($coupon['couponType']) ?>" readonly></input></td>
             <td><input name="couponSeverity" value=" <?php echo htmlspecialchars($coupon['couponSeverity']); ?>" readonly></input> </td>
             <td><input name="startDate" value="<?php if ($coupon['startDate'] === "0000-00-00") {
@@ -47,17 +50,17 @@
                                                 echo htmlspecialchars(date("m/d/Y", strtotime($coupon['endDate'])));
                                               } ?>" readonly></input>
             </td>
-            <td><input type="submit" value="Edit" name="edit"></input></td>
-            <td><input type="submit" value="Delete" name="delete"></input></td>
+            <td><input type="submit" value="Edit" name="edit" class="edit-button"></input></td>
+            <td><input type="submit" value="Delete" name="delete" class="delete-button"></input></td>
             <td><input type="hidden" value="<?php echo htmlspecialchars($coupon['couponID']) ?>" name="couponID"></input></td>
           </tr>
         </form>
       <?php } ?>
     </table>
     <div class="flex flex-column align-center">
-      <button type="button" class="button-styling" id="new-coupon">Make new coupon</button>
+      <button type="button" class="button-styling" id="new-coupon">New coupon</button>
       <div class="flex justify-center hidden" id="coupon-page">
-        <form action="insert.php" class="flex justify-center flex-column" id="coupon-form" method="post">
+        <form action="insert.php" class="flex justify-center flex-column form-styling" id="coupon-form" method="post">
           <label for="coupon-name">Coupon Code Name</label>
           <input type="text" name="coupon-name" id="coupon-code-name" required>
           <label for="coupon-type">Coupon Type</label>
@@ -71,7 +74,7 @@
           <input type="date" name="start-date" id="start-date">
           <label for="end-date">End Date</label>
           <input type="date" name="end-date" id="end-date">
-          <input type="submit">
+          <input type="submit" class="mt-5px">
         </form>
       </div>
     </div>

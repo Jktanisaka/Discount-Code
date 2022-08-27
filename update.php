@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST['delete'])) {
-  $id=$_POST['couponID'];
+  $id = $_POST['couponID'];
   include_once "delete.php";
   echo "deleted";
   exit();
@@ -25,6 +25,9 @@ $id = $_POST['couponID'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -32,7 +35,7 @@ $id = $_POST['couponID'];
   <div class="flex flex-column align-center">
     <h1>Edit Coupon</h1>
     <div class="flex justify-center" id="coupon-page">
-      <form action="update_db.php" class="flex justify-center flex-column" id="coupon-form" method="post">
+      <form action="update_db.php" class="flex justify-center flex-column form-styling" id="coupon-form" method="post">
         <label for="coupon-name">Coupon Code Name</label>
         <input type="text" name="coupon-name" id="coupon-code-name" required value="<?php echo $name ?>">
         <label for="coupon-type">Coupon Type</label>
@@ -47,7 +50,7 @@ $id = $_POST['couponID'];
         <label for=" end-date">End Date</label>
         <input type="date" name="end-date" id="end-date" value="<?php echo $end ?>">
         <input type="hidden" value="<?php echo $id ?>" name="couponID">
-        <input type="submit">
+        <input type="submit" class="mt-5px">
       </form>
     </div>
   </div>
