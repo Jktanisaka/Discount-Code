@@ -1,18 +1,24 @@
 * {
-
   font-family: 'Plus Jakarta Sans'
+}
+
+body{
+  background-color:rgb(246, 253, 253) ;
 }
 input {
   font-family: 'Plus Jakarta Sans';
 }
 
 tr:hover {
-  background-color: blue !important;
-  border-collapse: collapse;
+  background-color: lightblue;
 }
 
 .flex {
   display: flex;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .justify-center{
@@ -39,6 +45,15 @@ tr:hover {
   display: none;
 }
 
+.cart-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.cart-td {
+  margin: 1rem
+}
+
 .plus-jakarta-sans {
   font-family: 'Plus Jakarta Sans', roboto;
 }
@@ -48,16 +63,17 @@ tr:hover {
 
 .edit-button {
 background-color: lightsalmon;
-border-radius: 10px;
-border: 1px solid #1c1c1c;
-padding: 2px 4px;
+border-radius: 6px;
+padding: 4px 8px;
+box-shadow: 0 4px 4px rgb(0 0 0 / 20%);
+margin: 0 4px;
 }
 
 .delete-button {
 background-color: lightcoral;
-border-radius: 10px;
-  border: 1px solid #1c1c1c;
-  padding: 2px 4px;
+border-radius: 6px;
+padding: 4px 8px;
+box-shadow: 0 4px 4px rgb(0 0 0 / 20%)
 }
 
 .edit-button,
@@ -67,16 +83,33 @@ border-radius: 10px;
 }
 
 .button-styling {
-  height: auto;
+  height: 4rem;
   width: auto;
   margin: 1rem;
-  padding: .5rem;
+  padding: 5px 68px;
   border-radius:10px;
-  border: 1px solid black;
-  background-color: lightblue;
+  border: none;
+  color: white;
+  background-color: rgb(10, 186, 181);
   font-family: sans-serif;
+  font-weight: bold;
   font-size: 2rem;
-  box-shadow: 2px 5px #999
+  letter-spacing: -1px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 20%)
+}
+
+.sum-row-styling {
+  border-top: 1px solid gray;
+}
+
+.shopping-cart-styling {
+  empty-cells: show;
+}
+
+.form-styling {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 1px 4px 4px rgb(0 0 0 / 20%)
 }
 
 label {
@@ -84,7 +117,7 @@ label {
 }
 
 .button-styling:hover {
-  background-color: #1e93ba;
+  background-color: rgb(8, 160, 156);
 }
 
 .button-styling:active {
@@ -93,20 +126,57 @@ label {
   transform: translateY(4px);
 }
 
+
+
+.tr-heading:hover {
+  background-color: white;
+}
+
 td>input {
-  border-collapse: collapse !important;
   text-align: center;
+  align-items: center;
   padding: 0;
   border: none;
 }
 
+tr{
+  padding: 0px 5px 0px 5px;
+  background-color: white;
+
+}
 td{
   margin: 0px;
   padding: 3px 0;
-  border: none
+  border: none;
+}
+
+input{
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2px;
 }
 
 table{
   border-spacing: 0;
   border-collapse: collapse;
+}
+
+tbody {
+
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 1px 4px 8px rgb(0 0 0 / 20%);
+  border-radius: 10px;
+}
+
+.ms-1{
+  margin-left: 10px;
+}
+
+.mt-5px{
+  margin-top: 5px;
+}
+
+.cart-tr>td {
+  padding: 10px;
 }
