@@ -45,6 +45,14 @@ tr:hover {
   display: none;
 }
 
+.green {
+  color: green;
+}
+
+.red {
+  color: red
+}
+
 .cart-title {
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -76,6 +84,7 @@ padding: 4px 8px;
 box-shadow: 0 4px 4px rgb(0 0 0 / 20%)
 }
 
+button,
 .edit-button,
 .delete-button,
 .button-styling:hover {
@@ -98,6 +107,47 @@ box-shadow: 0 4px 4px rgb(0 0 0 / 20%)
   box-shadow: 0 4px 4px rgb(0 0 0 / 20%)
 }
 
+.apply-coupon-button {
+  height: 2.3rem;
+  width: auto;
+  border-radius: 5px;
+  border: none;
+  padding: 4px 10px;
+  color: white;
+  background-color: rgb(10, 186, 181);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: -1px;
+
+}
+
+.apply-coupon-input {
+  border-radius: 5px;
+  height: 2rem;
+  margin: 0;
+  border: 2px solid gray;
+  font-size: 1rem;
+  margin-right: 2px;
+
+}
+
+.apply-coupon-form{
+  margin-bottom: .5rem;
+  position: relative;
+  margin: auto;
+}
+
+#saved {
+  color: green;
+  font-weight: bold;
+}
+
+.status-box {
+  right: -130px;
+  top: -8px;
+}
+
 .sum-row-styling {
   border-top: 1px solid gray;
 }
@@ -116,9 +166,11 @@ label {
   margin: 5px;
 }
 
+.apply-coupon-button:hover,
 .button-styling:hover {
   background-color: rgb(8, 160, 156);
 }
+
 
 .button-styling:active {
   background-color: #1e93ba;

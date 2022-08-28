@@ -3,7 +3,6 @@ include_once 'db.php';
 
 $couponName = $_REQUEST['used-coupon'];
 
-
 $sql = "UPDATE coupon
         SET timesUsed = timesUsed + 1
         WHERE couponName = '$couponName' AND active = TRUE";
