@@ -1,9 +1,6 @@
 <?php
 include 'cart.php';
-
 $sum = 0;
-
-
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +19,15 @@ $sum = 0;
 
 <body>
   <div id="shopping-cart" class="flex justify-center flex-column">
-    <form action="verify.php" method="POST" class="flex justify-center">
-      <input name='coupon-code' id='coupon-code'></input>
-      <button type="button" id='apply-button'>Apply Coupon</button>
-      <p id="status" class="hidden"></p>
+    <form action="verify.php" method="POST" class="flex justify-center flex-column align-center apply-coupon-form">
+      <div class="flex justify-center align-center">
+        <input name='coupon-code' id='coupon-code' class="apply-coupon-input"></input>
+        <button type="button" id='apply-button' class="apply-coupon-button">Apply Coupon</button>
+      </div>
+      <div>
+        <p id="status" class="hidden text-center flex align-center status-box"></p>
+      </div>
+
     </form>
     <table class="flex justify-center shopping-cart-styling">
       <tbody>
@@ -56,25 +58,15 @@ $sum = 0;
         </tr>
         <tr class="text-center cart-tr hidden" id="new-total-tr">
           <td class="bold">New Total</td>
-          <td></td>
-          <td></td>
+          <td id="coupon-name"></td>
+          <td id='saved'></td>
           <td id='new-total' class="hidden bold"></td>
         </tr>
       </tbody>
     </table>
-    <!-- <?php foreach ($cart as $item) {
-            // $sum += $item['price'] * $item['amount'];
-          ?>
-      <div class="flex justify-center flex-column">
-        <h3><?php echo $item['productName'] ?></h3>
-        <p>x<?php echo $item['amount'] ?> ($<?php echo $item['price'] ?> each)</p>
-        <p>$<?php echo $item['price'] * $item['amount'] ?></p>
-      </div>
-    <?php } ?> -->
   </div>
-
   <form action='checkout.php' method="POST" class="flex justify-center">
-    <button type="submit">Checkout</button>
+    <button type="submit" class="button-styling">Checkout</button>
     <input type="hidden" id="used-coupon" name='used-coupon'></input>
   </form>
   <script src=" https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -82,6 +74,7 @@ $sum = 0;
   <script>
     $(document).ready(function() {
       $('#apply-button').click(function() {
+        const sum = $('#total').text().substring(1)
         const coupon = $('#coupon-code').val()
         $.ajax({
           type: "POST",
@@ -97,11 +90,14 @@ $sum = 0;
               $('#new-total-tr').show()
               $('#status').text("Coupon Added!").show()
               $('#used-coupon').val(coupon)
+              $('#coupon-name').text('coupon: ' + coupon)
+              $('#saved').text('-' + (parseInt(sum) - data))
             } else {
-              $("#status").text(data)
+              $('#status').removeClass('green').addClass('red')
+              $("#status").text(data).show()
             }
             $('#total')
-            console.log(typeof data)
+            console.log(sum)
           }
         })
 

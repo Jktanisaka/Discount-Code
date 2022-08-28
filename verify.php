@@ -4,7 +4,6 @@ include 'db.php';
 include 'cart.php';
 
 $couponName = $_POST['coupon'];
-// $cart = json_decode($_POST['cart']);
 
 date_default_timezone_set("US/Pacific");
 $date = date('Y-m-d');
@@ -13,20 +12,29 @@ $sql = "SELECT couponType, couponSeverity, startDate, endDate, shopID,  timesUse
         where couponName = '$couponName' && active = TRUE";
 
 $result = mysqli_query($conn, $sql);
+
+if(mysqli_num_rows($result) === 0){
+  echo "Coupon not found. Check your spelling and try again!";
+  mysqli_close($conn);
+  exit;
+}
+
 while ($row = mysqli_fetch_array($result)) {
   $shopID = $row['shopID'];
   $type = $row['couponType'];
   $severity = $row['couponSeverity'];
   $start = $row['startDate'];
-  $end =$row['endDate'];
+  $end = $row['endDate'];
 }
 
 if ($start !== "0000-00-00" && $date < $start) {
   echo "Coupon not yet active";
+  mysqli_close($conn);
   exit;
 }
 if ($end !== "0000-00-00" && $date > $end) {
   echo "Coupon expired";
+  mysqli_close($conn);
   exit;
 }
 
@@ -36,6 +44,7 @@ foreach ($cart as $item) {
   if($item['shopID'] === $shopID){
     $amount = $item['amount'];
     $price = $item['price'];
+
     switch($type) {
       case 'bogo':
         $pairs = floor($amount / 2);
@@ -51,6 +60,7 @@ foreach ($cart as $item) {
         $total += round(($price * $amount) - $severity, 2);
         break;
     }
+
   } else {$total += $item['price'] * $item['amount'];}
 }
 
@@ -60,7 +70,5 @@ echo $total;
 
 
 mysqli_close($conn);
-// // header("Location: localhost:3000//customer.php")
 
-// return $type; $severity; $shopID;
 ?>
