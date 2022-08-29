@@ -1,12 +1,12 @@
 <?php
-include_once 'db.php';
+include 'db/db.php';
 
 $sql = "UPDATE coupon
         SET active = FALSE
         WHERE couponID = '$id'";
 
 if (mysqli_query($conn, $sql)) {
-  echo "Coupon deleted";
+  header("Location: admin.php");
 } else {
   echo
   "Error: " . $sql . ":-" . mysqli_error($conn);

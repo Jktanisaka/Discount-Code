@@ -1,5 +1,5 @@
 <?php
-include 'cart.php';
+include 'src/cart.php';
 $sum = 0;
 ?>
 
@@ -19,7 +19,7 @@ $sum = 0;
 
 <body>
   <div id="shopping-cart" class="flex justify-center flex-column">
-    <form action="verify.php" method="POST" class="flex justify-center flex-column align-center apply-coupon-form">
+    <form action="src/verify.php" method="POST" class="flex justify-center flex-column align-center apply-coupon-form">
       <div class="flex justify-center align-center">
         <input name='coupon-code' id='coupon-code' class="apply-coupon-input"></input>
         <button type="button" id='apply-button' class="apply-coupon-button">Apply Coupon</button>
@@ -31,10 +31,10 @@ $sum = 0;
     </form>
     <table class="flex justify-center shopping-cart-styling">
       <tbody>
-        <tr class=" flex justify-center">
+        <tr class=" flex justify-center tr-heading">
           <th class="text-center cart-title">Shopping Cart</th>
         </tr>
-        <tr class="cart-tr">
+        <tr class="cart-tr tr-heading">
           <th>Product</th>
           <th>Amount</th>
           <th>Price</th>
@@ -65,45 +65,12 @@ $sum = 0;
       </tbody>
     </table>
   </div>
-  <form action='checkout.php' method="POST" class="flex justify-center">
+  <form action='src/checkout.php' method="POST" class="flex justify-center">
     <button type="submit" class="button-styling">Checkout</button>
     <input type="hidden" id="used-coupon" name='used-coupon'></input>
   </form>
   <script src=" https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="main.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#apply-button').click(function() {
-        const sum = $('#total').text().substring(1)
-        const coupon = $('#coupon-code').val()
-        $.ajax({
-          type: "POST",
-          url: "verify.php",
-          data: {
-            coupon: coupon
-          },
-          success: function(data) {
-            if (parseFloat(data)) {
-              $('#total').addClass('strikethrough')
-              $('#total-text').addClass('strikethrough')
-              $('#new-total').text("$" + parseFloat(data)).show()
-              $('#new-total-tr').show()
-              $('#status').text("Coupon Added!").show()
-              $('#used-coupon').val(coupon)
-              $('#coupon-name').text('coupon: ' + coupon)
-              $('#saved').text('-' + (parseInt(sum) - data))
-            } else {
-              $('#status').removeClass('green').addClass('red')
-              $("#status").text(data).show()
-            }
-            $('#total')
-            console.log(sum)
-          }
-        })
-
-      })
-    })
-  </script>
 </body>
 
 </html>

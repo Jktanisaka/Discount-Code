@@ -1,10 +1,13 @@
 <?php
-include_once 'db.php';
+include_once '../db/db.php';
 
 
 $id = $_REQUEST['couponID'];
 $name = $_REQUEST['coupon-name'];
 $type = $_REQUEST['coupon-type'];
+if($_REQUEST['max-uses'] === ''){
+  $maxUses = 0;
+} else {$maxUses = $_REQUEST['max-uses'];}
 
 if ($type === 'bogo') {
   $value = 50;
@@ -23,13 +26,12 @@ if ($_REQUEST['end-date']) {
   $end = null;
 }
 
-echo $name, $type, $value, $start, $end;
 
 $sql = "UPDATE coupon
-        SET couponName = '$name', startDate = '$start', endDate = '$end', couponType = '$type', couponSeverity = '$value'
+        SET couponName = '$name', startDate = '$start', endDate = '$end', couponType = '$type', couponSeverity = '$value', maxUses = '$maxUses'
         WHERE couponID = '$id'";
 if (mysqli_query($conn, $sql)) {
-  echo "Coupon added";
+  header("Location: ../admin.php");
 } else {
   echo
   "Error: " . $sql . ":-" . mysqli_error($conn);

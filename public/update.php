@@ -1,19 +1,25 @@
 <?php
 
-if (isset($_POST['delete'])) {
-  $id = $_POST['couponID'];
-  include_once "delete.php";
-  echo "deleted";
+if (isset($_REQUEST['delete'])) {
+  $id = $_REQUEST['couponID'];
+  include_once "./src/delete.php";
   exit();
 }
 
 
-$name = $_POST['couponName'];
-$type = $_POST['couponType'];
-$severity = $_POST['couponSeverity'];
-$start = str_replace('/', '-', date("Y-m-d", strtotime($_POST['startDate'])));
-$end = str_replace('/', '-', date("Y-m-d", strtotime($_POST['endDate'])));
-$id = $_POST['couponID'];
+$name = $_REQUEST['couponName'];
+$type = $_REQUEST['couponType'];
+$severity = $_REQUEST['couponSeverity'];
+$start = $_REQUEST['startDate'];
+if ($_REQUEST['startDate'] === 'none'){
+  $start = '';
+} else( $start = str_replace('/', '-', date("Y-m-d", strtotime($_REQUEST['startDate']))));
+if ($_REQUEST['endDate'] === 'none'){
+  $end = '';
+} else( $end = str_replace('/', '-', date("Y-m-d", strtotime($_REQUEST['endDate']))));
+
+$id = $_REQUEST['couponID'];
+$maxUses = $_REQUEST['maxUses'];
 
 
 ?>
@@ -35,7 +41,7 @@ $id = $_POST['couponID'];
   <div class="flex flex-column align-center">
     <h1>Edit Coupon</h1>
     <div class="flex justify-center" id="coupon-page">
-      <form action="update_db.php" class="flex justify-center flex-column form-styling" id="coupon-form" method="post">
+      <form action="src/update_db.php" class="flex justify-center flex-column form-styling" id="coupon-form" method="post">
         <label for="coupon-name">Coupon Code Name</label>
         <input type="text" name="coupon-name" id="coupon-code-name" required value="<?php echo $name ?>">
         <label for="coupon-type">Coupon Type</label>
@@ -45,12 +51,14 @@ $id = $_POST['couponID'];
           <option value="dollar">$ amount off</option>
         </select>
         <input type="number" class="hidden" id="value-box" name="value-box" value="<?php echo $severity ?>">
-        <label for="start-date">Start Date</label>
+        <label for="max-uses">Max Uses</label>
+        <input name='max-uses' type="number" value="<?php echo $maxUses ?>"></input>
+        <label for="start-date" >Start Date</label>
         <input type="date" name="start-date" id="start-date" value="<?php echo $start ?>">
         <label for=" end-date">End Date</label>
         <input type="date" name="end-date" id="end-date" value="<?php echo $end ?>">
         <input type="hidden" value="<?php echo $id ?>" name="couponID">
-        <input type="submit" class="mt-5px">
+        <input type="submit" class="submit-button">
       </form>
     </div>
   </div>

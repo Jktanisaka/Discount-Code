@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php';
+include_once '../db/db.php';
 
 $couponName = $_REQUEST['used-coupon'];
 
