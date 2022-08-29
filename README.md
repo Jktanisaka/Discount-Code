@@ -10,6 +10,7 @@ Languages Used:
 
 References:
 https://www.w3schools.com/php/
+https://www.w3schools.com/jquery/
 
 
 Funtionality Demos
@@ -22,3 +23,9 @@ Coupon Sucess
 
 Adding a Coupon
 ![addingcoupon](https://user-images.githubusercontent.com/96153171/187111849-e107a751-e686-46a4-963b-94fe395a827d.gif)
+
+Edit a Coupon
+![editcoupon](https://user-images.githubusercontent.com/96153171/187249937-6b23b518-a78d-4810-a1dd-e883c18e3fc7.gif)
+
+Delete a Coupon
+![deletecoupon](https://user-images.githubusercontent.com/96153171/187249980-7efbb303-35f6-4250-b22e-102dc813e6fb.gif)
