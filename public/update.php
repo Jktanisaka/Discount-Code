@@ -30,7 +30,7 @@ $maxUses = $_REQUEST['maxUses'];
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Update</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@ $maxUses = $_REQUEST['maxUses'];
         <input name='max-uses' type="number" value="<?php echo $maxUses ?>"></input>
         <label for="start-date" >Start Date</label>
         <input type="date" name="start-date" id="start-date" value="<?php echo $start ?>">
-        <label for=" end-date">End Date</label>
+        <label for="end-date">End Date</label>
         <input type="date" name="end-date" id="end-date" value="<?php echo $end ?>">
         <input type="hidden" value="<?php echo $id ?>" name="couponID">
         <input type="submit" class="submit-button">

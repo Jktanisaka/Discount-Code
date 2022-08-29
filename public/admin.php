@@ -1,3 +1,12 @@
+<?php
+include 'db/db.php';
+$sql = 'SELECT *
+        FROM coupon
+        where active = TRUE';
+$result = mysqli_query($conn, $sql);
+$coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +23,6 @@
 
 <body>
   <div>
-    <?php
-    include 'db/db.php';
-    $sql = 'SELECT *
-        FROM coupon
-        where active = TRUE';
-    $result = mysqli_query($conn, $sql);
-    $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    ?>
     <table class="flex justify-center">
       <h2 class="text-center">Existing Coupons</h2>
       <?php if (mysqli_num_rows($result) === 0) { ?>
@@ -49,10 +50,12 @@
               <td><input class="ms-1" name="couponName" value="<?php echo htmlspecialchars($coupon['couponName']) ?>" readonly></input> </td>
               <td><input name="couponType" value="<?php echo htmlspecialchars($coupon['couponType']) ?>" readonly></input></td>
               <td><input name="couponSeverity" value=" <?php echo htmlspecialchars($coupon['couponSeverity']); ?>" readonly></input> </td>
-              <td><input readonly name="maxUses" value="<?php if($coupon['maxUses'] === '0'){
-                echo "none";
-               } else { echo $coupon['maxUses']; }
-               ?>"> </input> </td>
+              <td><input readonly name="maxUses" value="<?php if ($coupon['maxUses'] === '0') {
+                                                          echo "none";
+                                                        } else {
+                                                          echo $coupon['maxUses'];
+                                                        }
+                                                        ?>"> </input> </td>
               <td><input readonly value="<?php echo htmlspecialchars($coupon['timesUsed']) ?>"> </input> </td>
               <td><input name="startDate" value="<?php if ($coupon['startDate'] === "0000-00-00") {
                                                     echo "none";
