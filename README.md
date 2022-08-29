@@ -19,3 +19,6 @@ Error Messages
 
 Coupon Sucess
 ![couponsuccess](https://user-images.githubusercontent.com/96153171/187111722-4d2a07fa-e94a-41f4-8606-1b64a730f736.gif)
+
+Adding a Coupon
+![addingcoupon](https://user-images.githubusercontent.com/96153171/187111849-e107a751-e686-46a4-963b-94fe395a827d.gif)
