@@ -1,0 +1,20 @@
+CREATE TABLE `shop` (
+	`shopID` INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (`shopID`)
+);
+
+CREATE TABLE `coupon` (
+	`couponID` INT NOT NULL AUTO_INCREMENT,
+	`shopID` INT NOT NULL,
+	`startDate` DATE,
+	`endDate` DATE,
+	`couponType` VARCHAR(255) NOT NULL,
+	`couponSeverity` INT NOT NULL,
+	`timesUsed` INT NOT NULL,
+	`couponName` TEXT NOT NULL,
+	`maxUses` INT,
+	`active` BOOLEAN NOT NULL,
+	PRIMARY KEY (`couponID`)
+);
+
+ALTER TABLE `coupon` ADD CONSTRAINT `coupon_fk0` FOREIGN KEY (`shopID`) REFERENCES `shop`(`shopID`);

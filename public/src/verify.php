@@ -1,13 +1,12 @@
 <?php
-include 'db.php';
-
+include '../db/db.php';
 include 'cart.php';
 
 $couponName = $_POST['coupon'];
 
 date_default_timezone_set("US/Pacific");
 $date = date('Y-m-d');
-$sql = "SELECT couponType, couponSeverity, startDate, endDate, shopID,  timesUsed
+$sql = "SELECT couponType, couponSeverity, startDate, endDate, shopID, timesUsed, maxUses
         FROM coupon
         where couponName = '$couponName' && active = TRUE";
 
@@ -25,8 +24,16 @@ while ($row = mysqli_fetch_array($result)) {
   $severity = $row['couponSeverity'];
   $start = $row['startDate'];
   $end = $row['endDate'];
+  $timesUsed = $row['timesUsed'];
+  $maxUses = $row['maxUses'];
 }
 
+
+if($timesUsed >= $maxUses && $maxUses !== '0'){
+  echo 'Coupon limit reached';
+  mysqli_close($conn);
+  exit;
+}
 if ($start !== "0000-00-00" && $date < $start) {
   echo "Coupon not yet active";
   mysqli_close($conn);
@@ -37,6 +44,8 @@ if ($end !== "0000-00-00" && $date > $end) {
   mysqli_close($conn);
   exit;
 }
+
+
 
 
 $total = 0;
