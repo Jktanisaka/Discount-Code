@@ -5,6 +5,8 @@ $sql = 'SELECT *
         where active = TRUE';
 $result = mysqli_query($conn, $sql);
 $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$names = array();
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +47,7 @@ $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </tr>
 
         <?php foreach ($coupons as $coupon) { ?>
+          <?php array_push($names, $coupon['couponName']) ?>
           <form action="update.php" method="POST">
             <tr>
               <td><input class="ms-1" name="couponName" value="<?php echo htmlspecialchars($coupon['couponName']) ?>" readonly></input> </td>
@@ -75,6 +78,7 @@ $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </tr>
           </form>
         <?php } ?>
+
     </table>
     <div class="flex flex-column align-center">
       <button type="button" class="button-styling" id="new-coupon">New coupon</button>
@@ -88,20 +92,39 @@ $coupons = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <option value="percentage">% off</option>
             <option value="dollar">$ amount off</option>
           </select>
-          <input type="number" class="hidden" id="value-box" name="value-box">
+          <input type="number" class="hidden" id="value-box" name="value-box" min="0">
           <label for='max-uses'>Max Uses</label>
-          <input type="number" id="max-uses" name="max-uses"></input>
+          <input type="number" id="max-uses" name="max-uses" min="0"></input>
           <label for="start-date">Start Date</label>
           <input type="date" name="start-date" id="start-date">
           <label for="end-date">End Date</label>
           <input type="date" name="end-date" id="end-date">
-          <input type="submit" class=" submit-button">
+
+          <input type="submit" class="submit-button">
         </form>
       </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="main.js"></script>
+  <script>
+    $('#coupon-form').submit(function() {
+      const names = <?php echo json_encode($names); ?>;
+      const enteredName = $('#coupon-code-name').val()
+      console.log(enteredName)
+      if (names.includes(enteredName)){
+        alert('Name must be unique')
+        return false
+      }
+        if ($('#start-date').val() !== '' && $('#end-date').val() !== '') {
+
+          if (Math.floor(new Date($('#start-date').val()).getTime() / 1000) >= Math.floor(new Date($('#end-date').val()).getTime() / 1000)) {
+            alert('Start date must be before end date')
+            return false
+          }
+        }
+    })
+  </script>
 </body>
 
 </html>

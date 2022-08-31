@@ -20,7 +20,6 @@ if ($_REQUEST['end-date']) {
   $end = $_REQUEST['end-date'];
 } else {$end = null;}
 
-
 $sql = "INSERT INTO coupon (couponName, startDate, endDate, couponType, couponSeverity, timesUsed, shopID, active, maxUses)
         VALUES ('$name', '$start', '$end', '$type', '$value', 0, 1, TRUE, $maxUses)";
 if (mysqli_query($conn, $sql)){
