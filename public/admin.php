@@ -92,7 +92,7 @@ mysqli_close($conn);
             <option value="percentage">% off</option>
             <option value="dollar">$ amount off</option>
           </select>
-          <input type="number" class="hidden" id="value-box" name="value-box" min="0">
+          <input type="number" class="hidden" id="value-box" name="value-box" min="0" max='100'>
           <label for='max-uses'>Max Uses</label>
           <input type="number" id="max-uses" name="max-uses" min="0"></input>
           <label for="start-date">Start Date</label>
