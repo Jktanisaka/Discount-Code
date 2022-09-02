@@ -8,7 +8,7 @@ Languages Used:
 * JavaScript or jQuery 
 * HTML and CSS
 
-References:
+References: <br>
 https://www.w3schools.com/php/  <br>
 https://www.w3schools.com/jquery/
 
